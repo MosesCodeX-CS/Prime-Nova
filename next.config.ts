@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
+  // Remove basePath and assetPrefix to serve from root
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
@@ -17,6 +20,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Ensure static export works correctly
+  trailingSlash: true,
 };
 
 export default nextConfig;
