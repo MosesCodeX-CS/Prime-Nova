@@ -1,26 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export', // required for static export
+  trailingSlash: true, // required for GitHub Pages
+
+  basePath: '/Prime-Nova',
+  assetPrefix: '/Prime-Nova/',
 
   images: {
-    unoptimized: true, // disable Next.js image optimization
+    unoptimized: true,
     remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'source.unsplash.com',
-      },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
+      { protocol: 'https', hostname: 'source.unsplash.com' },
     ],
   },
 
-  trailingSlash: true, // required for GitHub Pages
-
-  // GitHub Pages config
-  basePath: "/Prime-Nova",   // must match repo name exactly
-  assetPrefix: "/Prime-Nova/",
+  experimental: {
+    // ensure exported paths respect the basePath
+    outputFileTracingRoot: __dirname,
+  },
 };
 
 export default nextConfig;
