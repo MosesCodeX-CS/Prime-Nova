@@ -1,20 +1,16 @@
 import type { NextConfig } from 'next';
 
-const repoName = 'Prime-Nova'; // must match your GitHub repo exactly
-const useCustomDomain = false; // true only if you have a custom domain
+const repoName = 'Prime-Nova';
 
 const nextConfig: NextConfig = {
-  output: 'export',           // required for static export
-  distDir: 'out',             // folder for exported site
-  basePath: useCustomDomain ? '' : `/${repoName}`,
-  assetPrefix: useCustomDomain ? '' : `/${repoName}/`,
-  trailingSlash: true,        // required for GitHub Pages routing
+  output: 'export',          // Static export
+  distDir: 'out',            // Output folder
+  basePath: `/${repoName}`,  // For GitHub Pages repo
+  assetPrefix: `/${repoName}/`,
+  trailingSlash: true,       // Required for GitHub Pages
   reactStrictMode: true,
   images: {
-    unoptimized: true,        // required for static export
-  },
-  env: {
-    NEXT_PUBLIC_BASE_PATH: useCustomDomain ? '' : `/${repoName}`,
+    unoptimized: true,       // Required for static export
   },
 };
 
