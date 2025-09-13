@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export', // static HTML export for GitHub Pages
+  output: 'export', // required for static export
 
   images: {
     unoptimized: true, // disable Next.js image optimization
@@ -16,10 +16,10 @@ const nextConfig = {
     ],
   },
 
-  trailingSlash: true, // important for GitHub Pages routing
+  trailingSlash: true, // required for GitHub Pages
 
-  // 🔑 Required for GitHub Pages
-  basePath: "/Prime-Nova",   // must match your repo name EXACTLY (case-sensitive)
+  // GitHub Pages config
+  basePath: "/Prime-Nova",   // must match repo name exactly
   assetPrefix: "/Prime-Nova/",
 };
 
