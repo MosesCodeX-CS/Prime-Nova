@@ -1,0 +1,48 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: |
+          npm run build
+          npm run export
+          # Move all files from out to root
+          mv out/_next .
+          mv out/* .
+          # Ensure we have a clean index.html in root
+          if [ ! -f index.html ]; then
+            echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=/out" /></head><body>Redirecting to <a href="/out">Prime Nova</a>...</body></html>' > index.html
+          fi
+          touch .nojekyll
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .
+          branch: gh-pages
+          clean: true
+          clean-exclude: |
+            .nojekyll
+            CNAME
+          commit-message: "Deploy to GitHub Pages"
+          force: true
