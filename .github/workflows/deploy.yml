@@ -5,6 +5,10 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+env:
+  REPO_NAME: Prime-Nova
+  NODE_VERSION: '20.x'
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
@@ -16,7 +20,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
 
       - name: Install dependencies
@@ -24,11 +28,20 @@ jobs:
 
       - name: Build
         run: |
+          # Set environment variable for production build
+          echo "NEXT_PUBLIC_BASE_PATH=/$REPO_NAME" >> .env.production
+          
+          # Build the project
           npm run build
+          
+          # Create required files for GitHub Pages
           touch out/.nojekyll
           
-          # Create a proper 404.html for GitHub Pages
-          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Page Not Found</title><script>window.location.replace("/Prime-Nova/" + window.location.pathname.split("/").slice(2).join("/"));</script></head><body>Redirecting to Prime Nova...</body></html>' > out/404.html
+          # Create a proper 404.html that redirects to the main page
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Page Not Found</title><script>window.location.href="/$REPO_NAME/" + (window.location.pathname.split("$REPO_NAME/")[1] || "");</script><meta http-equiv="refresh" content="0; url=/$REPO_NAME/" /></head><body>Redirecting to Prime Nova...</body></html>' > out/404.html
+          
+          # Create a simple index.html that redirects to the main page
+          echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Prime Nova</title><script>window.location.href="/$REPO_NAME/";</script><meta http-equiv="refresh" content="0; url=/$REPO_NAME/" /></head><body>Redirecting to Prime Nova...</body></html>' > out/index.html
           
           # Copy CNAME if it exists
           if [ -f CNAME ]; then
@@ -44,5 +57,6 @@ jobs:
           clean-exclude: |
             .nojekyll
             CNAME
-          commit-message: "Deploy to GitHub Pages"
+            _next/
+          commit-message: "Deploy: $(date +'%Y-%m-%d %H:%M:%S')"
           force: true

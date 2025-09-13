@@ -2,10 +2,11 @@ import type { Configuration as WebpackConfig } from 'webpack';
 import type { NextConfig } from 'next';
 
 const isProd = process.env.NODE_ENV === 'production';
-const repoName = 'Prime-Nova';
+const repoName = process.env.REPO_NAME || 'Prime-Nova';
 
 const nextConfig: NextConfig = {
-  output: 'export', // required for static export
+  // Required for static export
+  output: 'export',
   distDir: 'out',
   
   // Base path for GitHub Pages
@@ -16,15 +17,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
     domains: ['images.unsplash.com', 'source.unsplash.com'],
-    path: isProd ? `/${repoName}/_next/image` : '/_next/image',
   },
   
-  // Ensure static export works correctly
-  experimental: {
-    outputFileTracingRoot: __dirname,
-  },
-  
-  // Required for GitHub Pages
+  // Required for static export
   trailingSlash: true,
   
   // Enable React Strict Mode
@@ -38,11 +33,18 @@ const nextConfig: NextConfig = {
       type: 'asset/resource',
     });
     
+    // Ensure proper public path for assets
+    if (isProd) {
+      config.output = config.output || {};
+      config.output.publicPath = `/${repoName}/`;
+    }
+    
     return config;
   },
   
   // Environment variables
   env: {
+    // This will be available in the browser
     NEXT_PUBLIC_BASE_PATH: isProd ? `/${repoName}` : '',
   },
 };
