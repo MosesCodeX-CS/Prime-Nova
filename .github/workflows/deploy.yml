@@ -26,9 +26,8 @@ jobs:
           npm run build
           npm run export
           touch out/.nojekyll
-          # Create a simple index.html that redirects to the actual site
-          echo '<!DOCTYPE html><html><head><meta http-equiv="refresh" content="0; url=./out" /></head><body>Redirecting to <a href="./out">Prime Nova</a>...</body></html>' > index.html
-          mv index.html out/
+          # Copy the index.html from public to the root of the out directory
+          cp public/index.html out/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
