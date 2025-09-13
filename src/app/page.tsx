@@ -441,11 +441,13 @@ function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection>
               <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img 
+                <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-w-16 aspect-h-9">
+                  <Image 
                     src="/about-image.jpg" 
                     alt="About Prime Nova" 
-                    className="w-full h-auto"
+                    width={800}
+                    height={450}
+                    className="w-full h-auto object-cover"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80';
