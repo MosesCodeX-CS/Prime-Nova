@@ -7,6 +7,9 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import "./globals.css";
 
+// Add base path for static export
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 const inter = Inter({ subsets: ["latin"] });
 
 // Since we're using 'use client', we'll handle metadata differently
@@ -27,27 +30,29 @@ interface NavItem {
 const navItems: NavItem[] = [
   { 
     name: 'Home', 
-    path: '/', 
+    path: `${basePath}/`, 
     icon: '⌂' 
   },
   { 
     name: 'About', 
-    path: '/about', 
+    path: `${basePath}/about`, 
     icon: '🏢',
     subItems: [
-      { name: 'Our Story', path: '/about/story', icon: '📜' },
-      { name: 'Leadership', path: '/about/leadership', icon: '👥' },
-      { name: 'Careers', path: '/careers', icon: '💼' },
+      { name: 'Our Story', path: `${basePath}/about/story`, icon: '📜' },
+      { name: 'Leadership', path: `${basePath}/about/leadership`, icon: '👥' },
+      { name: 'Careers', path: `${basePath}/careers`, icon: '💼' },
     ]
   },
   { 
     name: 'Services', 
-    path: '/services', 
+    path: `${basePath}/services`, 
     icon: '🛠️',
     subItems: [
-      { name: 'Web Development', path: '/services/web', icon: '🌐' },
-      { name: 'Mobile Apps', path: '/services/mobile', icon: '📱' },
-      { name: 'UI/UX Design', path: '/services/design', icon: '🎨' },
+      { name: 'Web Development', path: `${basePath}/services/web`, icon: '🌐' },
+      { name: 'Mobile Apps', path: `${basePath}/services/mobile`, icon: '📱' },
+      { name: 'UI/UX Design', path: `${basePath}/services/design`, icon: '🎨' },
+      { name: 'Cloud Solutions', path: `${basePath}/services/cloud`, icon: '☁️' },
+      { name: 'Digital Marketing', path: `${basePath}/services/marketing`, icon: '📈' },
       { name: 'Cloud Solutions', path: '/services/cloud', icon: '☁️' },
       { name: 'Digital Marketing', path: '/services/marketing', icon: '📈' },
     ]
@@ -56,24 +61,25 @@ const navItems: NavItem[] = [
     name: 'Solutions', 
     icon: '💡',
     subItems: [
-      { name: 'For Startups', path: '/solutions/startups', icon: '🚀' },
-      { name: 'For Enterprises', path: '/solutions/enterprise', icon: '🏢' },
-      { name: 'Case Studies', path: '/case-studies', icon: '📚' },
+      { name: 'For Startups', path: `${basePath}/solutions/startups`, icon: '🚀' },
+      { name: 'For Enterprises', path: `${basePath}/solutions/enterprise`, icon: '🏢' },
+      { name: 'Case Studies', path: `${basePath}/case-studies`, icon: '📚' },
     ]
   },
   { 
     name: 'Resources', 
     icon: '📚',
     subItems: [
-      { name: 'Blog', path: '/blog', icon: '✍️' },
-      { name: 'Whitepapers', path: '/resources/whitepapers', icon: '📄' },
-      { name: 'Webinars', path: '/resources/webinars', icon: '🎥' },
-      { name: 'FAQ', path: '/faq', icon: '❓' },
+      { name: 'Blog', path: `${basePath}/blog`, icon: '✍️' },
+      { name: 'Whitepapers', path: `${basePath}/resources/whitepapers`, icon: '📄' },
+      { name: 'Resources', path: `${basePath}/resources`, icon: '📚' },
+      { name: 'FAQ', path: `${basePath}/faq`, icon: '❓' },
+      { name: 'Webinars', path: `${basePath}/resources/webinars`, icon: '🎥' },
     ]
   },
   { 
     name: 'Contact', 
-    path: '/contact', 
+    path: `${basePath}/contact`, 
     icon: '📱' 
   },
 ];
