@@ -1,14 +1,8 @@
-import type { NextConfig } from "next";
-
-const isProd = process.env.NODE_ENV === 'production';
-const basePath = ''; // Empty for root deployment
-
-const nextConfig: NextConfig = {
-  output: 'export',
-  basePath: basePath,
-  assetPrefix: basePath ? `${basePath}/` : undefined,
-  images: {
-    unoptimized: true,
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',   // enables static HTML export
+  images: { 
+    unoptimized: true, // needed for GitHub Pages
     remotePatterns: [
       {
         protocol: 'https',
@@ -24,8 +18,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Ensure static export works correctly
   trailingSlash: true,
-};
+}
 
 export default nextConfig;
