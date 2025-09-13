@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true, // Required for static export
     domains: ['images.unsplash.com', 'source.unsplash.com'],
+    path: isProd ? `/${repoName}/_next/image` : '/_next/image',
+  },
+  
+  // Ensure static export works correctly
+  experimental: {
+    outputFileTracingRoot: __dirname,
   },
   
   // Required for GitHub Pages
