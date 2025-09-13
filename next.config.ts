@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',   // enables static HTML export
-  images: { 
-    unoptimized: true, // needed for GitHub Pages
+  output: 'export', // static HTML export for GitHub Pages
+
+  images: {
+    unoptimized: true, // disable Next.js image optimization
     remotePatterns: [
       {
         protocol: 'https',
@@ -12,17 +13,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'source.unsplash.com',
       },
-      {
-        protocol: 'http',
-        hostname: 'localhost',
-      },
     ],
   },
-  trailingSlash: true,
 
-  // 🔑 Needed for GitHub Pages
-  basePath: "/prime-nova",   // repo name
-  assetPrefix: "/prime-nova/", 
-}
+  trailingSlash: true, // important for GitHub Pages routing
+
+  // 🔑 Required for GitHub Pages
+  basePath: "/Prime-Nova",   // must match your repo name EXACTLY (case-sensitive)
+  assetPrefix: "/Prime-Nova/",
+};
 
 export default nextConfig;
