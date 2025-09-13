@@ -1,50 +1,18 @@
 import type { NextConfig } from 'next';
-import type { Configuration as WebpackConfig } from 'webpack';
 
-const isProd = process.env.NODE_ENV === 'production';
-const repoName = process.env.REPO_NAME || 'Prime-Nova';
-const useCustomDomain = true; // set to false if using GitHub Pages repo URL
+const repoName = 'Prime-Nova'; // must match your GitHub repo exactly
+const useCustomDomain = false; // true only if you have a custom domain
 
 const nextConfig: NextConfig = {
-  // Static export for GitHub Pages
-  output: 'export',
-  distDir: 'out',
-
-  // Base path and asset prefix
+  output: 'export',           // required for static export
+  distDir: 'out',             // folder for exported site
   basePath: useCustomDomain ? '' : `/${repoName}`,
   assetPrefix: useCustomDomain ? '' : `/${repoName}/`,
-
-  // Images
-  images: {
-    unoptimized: true, // Required for static export
-  },
-
-  // Add trailing slash for GitHub Pages
-  trailingSlash: true,
-
-  // React strict mode
+  trailingSlash: true,        // required for GitHub Pages routing
   reactStrictMode: true,
-
-  // Webpack config
-  webpack: (config: WebpackConfig) => {
-    // Safely add asset/resource rules
-    if (config.module) {
-      config.module.rules.push({
-        test: /\.(png|jpg|jpeg|gif|svg|eot|ttf|woff|woff2)$/i,
-        type: 'asset/resource',
-      });
-    }
-
-    // Set public path for GitHub Pages
-    if (isProd && !useCustomDomain) {
-      config.output = config.output || {};
-      config.output.publicPath = `/${repoName}/`;
-    }
-
-    return config;
+  images: {
+    unoptimized: true,        // required for static export
   },
-
-  // Environment variables
   env: {
     NEXT_PUBLIC_BASE_PATH: useCustomDomain ? '' : `/${repoName}`,
   },
