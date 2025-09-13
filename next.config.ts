@@ -1,8 +1,12 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === 'production';
+const basePath = ''; // Empty for root deployment
+
 const nextConfig: NextConfig = {
   output: 'export',
-  // Remove basePath and assetPrefix to serve from root
+  basePath: basePath,
+  assetPrefix: basePath ? `${basePath}/` : undefined,
   images: {
     unoptimized: true,
     remotePatterns: [
