@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://mosescodex-cs.github.io/Prime-Nova",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "export": "next build && next export",
-    "deploy": "npm run export && npx gh-pages -d out -b gh-pages"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "deploy": "next build && npx gh-pages -d out -b gh-pages",
+  "lint": "eslint"
+},
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "clsx": "^2.1.1",
