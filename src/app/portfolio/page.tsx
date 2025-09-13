@@ -78,7 +78,7 @@ export default function PortfolioPage() {
               Our Work
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-xl text-indigo-100">
-              Explore our portfolio of successful projects and see how we've helped businesses transform through technology.
+              Explore our portfolio of successful projects and see how we&apos;ve helped businesses transform through technology.
             </p>
           </div>
         </div>
@@ -159,7 +159,7 @@ export default function PortfolioPage() {
           <div className="bg-indigo-50 rounded-lg p-8 md:p-12 text-center">
             <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
               <span className="block">Ready to start your project?</span>
-              <span className="block text-indigo-600">Let's build something amazing together.</span>
+              <span className="block text-indigo-600">Let&apos;s build something amazing together.</span>
             </h2>
             <div className="mt-8 flex justify-center">
               <div className="inline-flex rounded-md shadow">
@@ -191,7 +191,7 @@ export default function PortfolioPage() {
               What Our Clients Say
             </h2>
             <p className="mt-4 text-xl text-gray-600">
-              Don't just take our word for it. Here's what our clients have to say about working with us.
+              Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.
             </p>
           </div>
           <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">

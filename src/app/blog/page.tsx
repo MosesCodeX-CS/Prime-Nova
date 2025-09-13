@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { CalendarIcon, ClockIcon, TagIcon } from '@heroicons/react/24/outline';
 
 const posts = [
   {

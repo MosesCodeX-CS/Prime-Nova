@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, useAnimation, AnimatePresence, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiArrowRight, FiCheck, FiUsers, FiAward, FiLayers, FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
+import { FiArrowRight, FiCheck, FiMail, FiPhone, FiMapPin, FiFacebook, FiTwitter, FiInstagram, FiLinkedin } from 'react-icons/fi';
 import { FaChartLine, FaLightbulb, FaHandshake } from 'react-icons/fa';
 
 // Type definitions
@@ -128,7 +128,7 @@ const Footer = () => (
         <AnimatedSection delay={0.1}>
           <div>
             <h3 className="text-xl font-bold mb-6">Prime Nova</h3>
-            <p className="text-gray-400 mb-6">Innovative IT and business solutions to help your company grow and succeed in the digital age.</p>
+            <p className="mt-4 text-lg text-gray-600">We&apos;re a team of passionate professionals dedicated to delivering exceptional results. Our mission is to help businesses thrive in the digital age through innovative solutions and strategic thinking.</p>
             <div className="flex space-x-4">
               <motion.a 
                 href="#" 
@@ -512,7 +512,7 @@ function Home() {
           <AnimatedSection>
             <div className="text-center mb-16">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">Don't just take our word for it. Here's what our clients have to say about working with us.</p>
+              <p className="text-gray-600 max-w-2xl mx-auto">Don&apos;t just take our word for it. Here&apos;s what our clients have to say about working with us.</p>
             </div>
           </AnimatedSection>
 
@@ -528,7 +528,7 @@ function Home() {
                     transition={{ duration: 0.6, ease: 'easeInOut' }}
                     className="absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-gray-50 rounded-xl shadow-sm"
                   >
-                    <div className="text-5xl text-gray-200 mb-4">"</div>
+                    <div className="text-5xl text-gray-200 mb-4">&quot;</div>
                     <p className="text-xl text-gray-700 mb-6">{testimonials[currentTestimonial].quote}</p>
                     <div>
                       <p className="font-semibold text-gray-900">{testimonials[currentTestimonial].author}</p>
@@ -576,7 +576,7 @@ function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              Let's discuss how we can help you achieve your business goals with our innovative solutions.
+              Let&apos;s discuss how we can help you achieve your business goals with our innovative solutions.
             </motion.p>
             <motion.div 
               className="flex flex-col sm:flex-row justify-center gap-4"

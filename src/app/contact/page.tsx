@@ -40,7 +40,7 @@ export default function ContactPage() {
         subject: '',
         message: '',
       });
-    } catch (error) {
+    } catch {
       setStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -62,7 +62,7 @@ export default function ContactPage() {
               Get in Touch
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-xl text-indigo-100">
-              Have questions or ready to start your next project? We'd love to hear from you.
+              Have questions or ready to start your next project? We&apos;d love to hear from you! Whether you have a question about our services, pricing, or anything else, our team is ready to help.
             </p>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <div>
                 <h2 className="text-2xl font-extrabold text-gray-900 sm:text-3xl">Contact Information</h2>
                 <p className="mt-4 text-lg text-gray-500">
-                  We're here to help and answer any questions you might have. We look forward to hearing from you.
+                  We&apos;re here to help and answer any questions you might have. We look forward to hearing from you.
                 </p>
               </div>
               
@@ -162,7 +162,7 @@ export default function ContactPage() {
                       </div>
                       <div className="ml-3">
                         <p className="text-sm font-medium text-green-800">
-                          Thank you for your message! We'll get back to you soon.
+                          Thank you for your message! We&apos;ll get back to you within 24 hours.
                         </p>
                       </div>
                     </div>
@@ -321,7 +321,7 @@ export default function ContactPage() {
             <span className="block">Ready to start your next project?</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-indigo-200">
-            Contact us today and let's discuss how we can help you achieve your business goals.
+            Contact us today and let&apos;s discuss how we can help your business grow.
           </p>
           <a
             href="#contact-form"

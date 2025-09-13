@@ -33,10 +33,10 @@ export default function AboutPage() {
             </h2>
             <div className="mt-6 text-gray-500 space-y-6">
               <p>
-                Founded in 2015, Prime Nova began as a small team of passionate technologists with a vision to help businesses leverage technology for growth. What started as a modest startup has grown into a trusted partner for companies across various industries.
+                Founded in 2015, Prime Nova began as a small team of passionate professionals with a vision to help businesses leverage technology for growth. What started as a modest startup has grown into a trusted partner for companies across various industries.
               </p>
               <p>
-                Our journey has been marked by innovation, dedication, and a relentless pursuit of excellence. We've helped over 200 clients transform their businesses through our custom IT solutions.
+                Our journey has been marked by innovation, dedication, and a relentless pursuit of excellence. We&apos;ve helped over 200 clients transform their businesses through our custom IT solutions.
               </p>
             </div>
           </div>
