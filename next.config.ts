@@ -4,19 +4,21 @@ import type { NextConfig } from 'next';
 const isProd = process.env.NODE_ENV === 'production';
 const repoName = process.env.REPO_NAME || 'Prime-Nova';
 
+// For GitHub Pages, we'll use a custom domain-like setup
+const useCustomDomain = true;
+
 const nextConfig: NextConfig = {
   // Required for static export
   output: 'export',
   distDir: 'out',
   
-  // Base path for GitHub Pages
-  basePath: isProd ? `/${repoName}` : '',
-  assetPrefix: isProd ? `/${repoName}/` : '',
+  // Use empty base path for custom domain-like setup
+  basePath: useCustomDomain ? '' : `/${repoName}`,
+  assetPrefix: useCustomDomain ? '' : `/${repoName}/`,
   
   // Image optimization
   images: {
     unoptimized: true, // Required for static export
-    domains: ['images.unsplash.com', 'source.unsplash.com'],
   },
   
   // Required for static export
@@ -34,7 +36,7 @@ const nextConfig: NextConfig = {
     });
     
     // Ensure proper public path for assets
-    if (isProd) {
+    if (isProd && !useCustomDomain) {
       config.output = config.output || {};
       config.output.publicPath = `/${repoName}/`;
     }
@@ -44,8 +46,7 @@ const nextConfig: NextConfig = {
   
   // Environment variables
   env: {
-    // This will be available in the browser
-    NEXT_PUBLIC_BASE_PATH: isProd ? `/${repoName}` : '',
+    NEXT_PUBLIC_BASE_PATH: useCustomDomain ? '' : `/${repoName}`,
   },
 };
 
