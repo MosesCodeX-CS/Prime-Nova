@@ -19,6 +19,10 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
+
+  // 🔑 Needed for GitHub Pages
+  basePath: "/prime-nova",   // repo name
+  assetPrefix: "/prime-nova/", 
 }
 
 export default nextConfig;
