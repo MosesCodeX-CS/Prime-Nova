@@ -27,31 +27,25 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ./Prime_Nova
 
       - name: Type check
         run: pnpm type-check
-        working-directory: ./Prime_Nova
 
       - name: Lint
         run: pnpm lint
-        working-directory: ./Prime_Nova
 
       - name: Format check
         run: pnpm format:check
-        working-directory: ./Prime_Nova
 
       - name: Run tests
         run: pnpm test
-        working-directory: ./Prime_Nova
 
       - name: Build application
         run: pnpm build
-        working-directory: ./Prime_Nova
 
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: build-files
-          path: Prime_Nova/.next/
+          path: .next/
           retention-days: 1

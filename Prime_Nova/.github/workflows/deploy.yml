@@ -34,16 +34,14 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
-        working-directory: ./Prime_Nova
 
       - name: Build and export static files
         run: pnpm export
-        working-directory: ./Prime_Nova
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./Prime_Nova/out
+          path: ./out
 
   deploy:
     environment:
