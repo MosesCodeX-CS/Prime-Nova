@@ -7,9 +7,12 @@ const nextConfig = {
       // Add your CMS image domains here
     ],
     formats: ['image/webp', 'image/avif'],
+    unoptimized: process.env.NODE_ENV === 'production' && process.env.GITHUB_ACTIONS === 'true',
   },
-  // Enable static exports for better performance
-  output: 'standalone',
+  // Enable static exports for GitHub Pages
+  output: process.env.GITHUB_ACTIONS === 'true' ? 'export' : 'standalone',
+  trailingSlash: true,
+  distDir: process.env.GITHUB_ACTIONS === 'true' ? 'out' : '.next',
   // Optimize bundle size
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
